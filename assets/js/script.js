@@ -1,5 +1,5 @@
 // Variables for elements
-var currentDayEl = $("#currentDay")
+var currentDayEl = $("#current-day")
 var descriptionEl = $("#description")
 var saveButton = $("#save-btn") 
 var clearButton = $("#clear-btn")
@@ -18,7 +18,12 @@ setInterval(() => {
 
 
 // Need function to determine present, past, future time/hour
-
+function displayDescript() {
+    for (var i = 0; i < 12; i++) {
+        descriptionEl = localStorage.getItem("Description" + i);
+        descriptionEl + i.text(descriptionEl);
+    }
+}
 
 
 // Store description in local storage - WIP
@@ -29,9 +34,9 @@ function addText(event) {
 
 
 // Save button - WIP
-saveButton.addEventListener("click"), function() {
-    preventDefault();
-}
+saveButton.click(addText);
+    displayDescript();
+
 
 
 // Clear Schedule button - WIP
