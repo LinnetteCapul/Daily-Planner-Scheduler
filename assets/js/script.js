@@ -1,4 +1,4 @@
-
+// Variables for elements
 var currentDayEl = $("#currentDay")
 var descriptionEl = $("#description")
 var saveButton = $("#save-btn") 
