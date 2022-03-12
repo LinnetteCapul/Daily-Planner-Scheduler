@@ -5,6 +5,7 @@ var saveButton = $("#save-btn")
 var clearButton = $("#clear-btn")
 
 
+
 //Display current date and time
 function displayDate() {
    var rightNow = moment().format("dddd, MMMM Do, YYYY, h:mm:ss a");
@@ -18,12 +19,22 @@ setInterval(() => {
 
 
 // Need function to determine present, past, future time/hour
-function displayDescript() {
-    for (var i = 0; i < 12; i++) {
-        descriptionEl = localStorage.getItem("Description" + i);
-        descriptionEl + i.text(descriptionEl);
+function checkTime(hour) {
+    var currentHour = moment().format("HH");
+    var timeHour = hour.data(index);
+
+    if (timeHour < currentHour) {
+        $(hour).addClass("past");
+    } else if (timeHour == currentHour) {
+        $(hour).addClass("present");
+    } else if (timeHour > currentHour) {
+        $(hour).addClass("future");
     }
 }
+
+setInterval(() => {
+    displayDate()
+}, 1000);
 
 
 // Store description in local storage - WIP
@@ -33,9 +44,9 @@ function addText(event) {
 }
 
 
-// Save button - WIP
-saveButton.click(addText);
-    displayDescript();
+// // Save button - WIP
+// saveButton.click(addText);
+//     displayDescript();
 
 
 
