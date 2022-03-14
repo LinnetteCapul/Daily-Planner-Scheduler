@@ -1,6 +1,5 @@
 // Variables for elements
 var currentDayEl = $("#current-day")
-var descriptionEl = $(".description")
 var saveButton = $(".save-btn") 
 var clearButton = $(".clear-btn")
 
@@ -15,7 +14,7 @@ var threePM = $(".hour15")
 var fourPM = $(".hour16")
 var fivePM = $(".hour17")
 
-//Display current date and time at top of the page
+//Function displays current date and time at top of the page
 function displayDate() {
    var rightNow = moment().format("dddd, MMMM Do, YYYY, h:mm:ss a");
     currentDayEl.text(rightNow);
@@ -26,7 +25,7 @@ setInterval(() => {
 }, 1000);
 
 
-// Need function to determine present, past, future time/hour
+//Function checks a specific hour block if it is past, present, or future hour and sets the applicable class for it
 function checkTime(hour) {
     var currentHour = moment().format("HH");
     var timeHour = hour.data("index");
@@ -45,6 +44,7 @@ setInterval(() => {
 }, 60000);
 
 
+// Interval runs the checkTime function every minute on all timeblocks to keep up to date on application
 setInterval(() => {
     checkTime(eightAM);
     checkTime(nineAM);
@@ -61,7 +61,7 @@ setInterval(() => {
 
 
 
-// Store description in local storage - WIP
+// Function stores input in local storage in order to be retrieved later
 function setDescription() {
     localStorage.setItem("hour8", eightAM.val());
     localStorage.setItem("hour9", nineAM.val());
@@ -76,7 +76,7 @@ function setDescription() {
     
 }
 
-// Local Storage Description function
+// Function retrieves input stored in local storage and sets it the matching text area for each hour
 function getDescription() {
     var descriptEight = localStorage.getItem("hour8");
     var descriptNine = localStorage.getItem("hour9");
@@ -102,7 +102,7 @@ function getDescription() {
 
 }
 
-
+// All functions needed to run application in order for it work from initial load in the browser to when user interacts with web application and hour time is up to date
 getDescription();
 displayDate();
 checkTime(eightAM);
@@ -116,16 +116,17 @@ checkTime(threePM);
 checkTime(fourPM);
 checkTime(fivePM);
 
-// // Save button - WIP
-saveButton.click(addText);
+// // Save button 
+saveButton.on("click", function() {
     setDescription();
+});
 
 
 
-// Clear Schedule button - WIP
+// Clear Schedule button 
 clearButton.on("click"), function() {
     localStorage.clear();
-    descriptionEl.clear();
+    setDescription.clear();
 }
 
 
