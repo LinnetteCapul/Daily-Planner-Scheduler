@@ -16,8 +16,9 @@ var fivePM = $(".hour17")
 
 //Function displays current date and time at top of the page
 function displayDate() {
-   var rightNow = moment().format("dddd, MMMM Do, YYYY, h:mm:ss a");
+    var rightNow = moment().format("dddd, MMMM Do, YYYY, h:mm:ss a");
     currentDayEl.text(rightNow);
+
 }
 
 setInterval(() => {
