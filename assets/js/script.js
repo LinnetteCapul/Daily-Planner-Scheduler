@@ -25,7 +25,6 @@ setInterval(() => {
     displayDate()
 }, 1000);
 
-
 //Function checks a specific hour block if it is past, present, or future hour and sets the applicable class for it
 function checkTime(hour) {
     var currentHour = moment().format("HH");
@@ -44,7 +43,6 @@ setInterval(() => {
     displayDate();
 }, 60000);
 
-
 // Interval runs the checkTime function every minute on all timeblocks to keep up to date on application
 setInterval(() => {
     checkTime(eightAM);
@@ -59,7 +57,6 @@ setInterval(() => {
     checkTime(fivePM);
 
 }, 60000);
-
 
 
 // Function stores input in local storage in order to be retrieved later
@@ -122,10 +119,8 @@ saveButton.on("click", function() {
     setDescription();
 });
 
-
-
 // Clear Schedule button 
-clearButton.on("click"), function() {
+clearButton.on("click"), setDescription(); {
     localStorage.clear();
     setDescription.clear();
 }
